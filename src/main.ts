@@ -36,10 +36,12 @@ webSocket$
     // console.log(buf.slice(8))
     // const blop = program.coder.accounts.decode("loan", new Buffer( accountNotification.params.result.value.data[0],  accountNotification.params.result.value.data[1]))
     // console.log(blop)
-    const blop = decodeLoan(new Buffer( accountNotification.params.result.value.data[0], 
-       accountNotification.params.result.value.data[1]), 
-       new Connection(RPC_ENDPOINT, "confirmed"), new PublicKey("ESuQdAjueJSARPYsUZnB7nxbWKEPU8ynkRWLrFrGZsLi"))
-    console.log(blop) 
+    if (new Buffer(accountNotification.params.result.value.data[0], accountNotification.params.result.value.data[1]).length > 0){
+      const blop = decodeLoan(new Buffer( accountNotification.params.result.value.data[0], 
+        accountNotification.params.result.value.data[1]), 
+        new Connection(RPC_ENDPOINT, "confirmed"), new PublicKey("ESuQdAjueJSARPYsUZnB7nxbWKEPU8ynkRWLrFrGZsLi"))
+      console.log(blop) 
+    }
 
   }
   );
